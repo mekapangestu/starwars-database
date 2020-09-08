@@ -56,7 +56,7 @@ function getPeopleDetails(id) {
                     success: function(datas) {
                         console.log(data.species.length);
                         if (i < data.species.length) {
-                            $("#species").append(datas.name);
+                            $("#species").append(datas.name + ", ");
                         } else {
                             $("#species").append(datas.name + ", ");
                         }
@@ -75,7 +75,7 @@ function getPeopleDetails(id) {
                     success: function(datas) {
                         console.log(data.vehicles.length);
                         if (i < data.vehicles.length) {
-                            $("#vehicles").append(datas.name);
+                            $("#vehicles").append(datas.name + ", ");
                         } else {
                             $("#vehicles").append(datas.name + ", ");
                         }
@@ -94,7 +94,7 @@ function getPeopleDetails(id) {
                     success: function(datas) {
                         console.log(data.starships.length);
                         if (i < data.starships.length) {
-                            $("#starships").append(datas.name);
+                            $("#starships").append(datas.name + ", ");
                         } else {
                             $("#starships").append(datas.name + ", ");
                         }
@@ -112,7 +112,7 @@ function getFilmDetails(id) {
         url: 'https://swapi.dev/api/films/' + id + "/",
         dataType: 'json',
         success: function(data) {
-            // console.log(data.height);
+            console.log(data);
             $("#title").text(data.title);
             $("#episode_id").text(data.episode_id);
             $("#opening_crawl").text(data.opening_crawl);
@@ -125,15 +125,17 @@ function getFilmDetails(id) {
 
             // Characters
             var i;
-            for (i = 0; i < data.people.length; i++) {
-                var idPeople = data.people[i].split("/");
+            var dataLength = data.characters.length;
+
+            for (i = 0; i < dataLength; i++) {
+                var idPeople = data.characters[i].split("/");
                 $.ajax({
                     url: 'https://swapi.dev/api/people/' + idPeople[5] + "/",
                     dataType: 'json',
                     success: function(datas) {
-                        console.log(data.people.length);
-                        if (i < data.people.length) {
-                            $("#characters").append(datas.name);
+                        console.log(data.characters.length);
+                        if (i < data.characters.length) {
+                            $("#characters").append(datas.name + ", ");
                         } else {
                             $("#characters").append(datas.name + ", ");
                         }
@@ -152,7 +154,7 @@ function getFilmDetails(id) {
                     success: function(datas) {
                         console.log(data.planets.length);
                         if (i < data.planets.length) {
-                            $("#planets").append(datas.name);
+                            $("#planets").append(datas.name + ", ");
                         } else {
                             $("#planets").append(datas.name + ", ");
                         }
@@ -161,27 +163,9 @@ function getFilmDetails(id) {
                 });
             }
 
-            // Films
-            var i;
-            for (i = 0; i < data.films.length; i++) {
-                var idFilm = data.films[i].split("/");
-                $.ajax({
-                    url: 'https://swapi.dev/api/films/' + idFilm[5] + "/",
-                    dataType: 'json',
-                    success: function(datas) {
-                        console.log(data.films.length);
-                        if (i < data.films.length) {
-                            $("#films").append(datas.title);
-                        } else {
-                            $("#films").append(datas.title + ", ");
-                        }
-
-                    }
-                });
-            }
-
             // Species
             var i;
+            console.log(data.species.length);
             for (i = 0; i < data.species.length; i++) {
                 var idSpecies = data.species[i].split("/");
                 $.ajax({
@@ -190,7 +174,7 @@ function getFilmDetails(id) {
                     success: function(datas) {
                         console.log(data.species.length);
                         if (i < data.species.length) {
-                            $("#species").append(datas.name);
+                            $("#species").append(datas.name + ", ");
                         } else {
                             $("#species").append(datas.name + ", ");
                         }
@@ -209,7 +193,7 @@ function getFilmDetails(id) {
                     success: function(datas) {
                         console.log(data.vehicles.length);
                         if (i < data.vehicles.length) {
-                            $("#vehicles").append(datas.name);
+                            $("#vehicles").append(datas.name + ", ");
                         } else {
                             $("#vehicles").append(datas.name + ", ");
                         }
@@ -228,7 +212,7 @@ function getFilmDetails(id) {
                     success: function(datas) {
                         console.log(data.starships.length);
                         if (i < data.starships.length) {
-                            $("#starships").append(datas.name);
+                            $("#starships").append(datas.name + ", ");
                         } else {
                             $("#starships").append(datas.name + ", ");
                         }
@@ -280,7 +264,7 @@ function getSpeciesDetails(id) {
                     success: function(datas) {
                         console.log(data.people.length);
                         if (i < data.people.length) {
-                            $("#people").append(datas.name);
+                            $("#people").append(datas.name + ", ");
                         } else {
                             $("#people").append(datas.name + ", ");
                         }
@@ -299,7 +283,7 @@ function getSpeciesDetails(id) {
                     success: function(datas) {
                         console.log(data.films.length);
                         if (i < data.films.length) {
-                            $("#films").append(datas.title);
+                            $("#films").append(datas.title + ", ");
                         } else {
                             $("#films").append(datas.title + ", ");
                         }
@@ -337,15 +321,15 @@ function getStarshipsDetails(id) {
 
             // Pilots
             var i;
-            for (i = 0; i < data.people.length; i++) {
-                var idPeople = data.people[i].split("/");
+            for (i = 0; i < data.pilots.length; i++) {
+                var idPeople = data.pilots[i].split("/");
                 $.ajax({
                     url: 'https://swapi.dev/api/people/' + idPeople[5] + "/",
                     dataType: 'json',
                     success: function(datas) {
-                        console.log(data.people.length);
-                        if (i < data.people.length) {
-                            $("#pilots").append(datas.name);
+                        console.log(data.pilots.length);
+                        if (i < data.pilots.length) {
+                            $("#pilots").append(datas.name + ", ");
                         } else {
                             $("#pilots").append(datas.name + ", ");
                         }
@@ -364,7 +348,7 @@ function getStarshipsDetails(id) {
                     success: function(datas) {
                         console.log(data.films.length);
                         if (i < data.films.length) {
-                            $("#films").append(datas.title);
+                            $("#films").append(datas.title + ", ");
                         } else {
                             $("#films").append(datas.title + ", ");
                         }
@@ -400,15 +384,15 @@ function getVehiclesDetails(id) {
 
             // Pilots
             var i;
-            for (i = 0; i < data.people.length; i++) {
-                var idPeople = data.people[i].split("/");
+            for (i = 0; i < data.pilots.length; i++) {
+                var idPeople = data.pilots[i].split("/");
                 $.ajax({
                     url: 'https://swapi.dev/api/people/' + idPeople[5] + "/",
                     dataType: 'json',
                     success: function(datas) {
-                        console.log(data.people.length);
-                        if (i < data.people.length) {
-                            $("#pilots").append(datas.name);
+                        console.log(data.pilots.length);
+                        if (i < data.pilots.length) {
+                            $("#pilots").append(datas.name + ", ");
                         } else {
                             $("#pilots").append(datas.name + ", ");
                         }
@@ -427,7 +411,7 @@ function getVehiclesDetails(id) {
                     success: function(datas) {
                         console.log(data.films.length);
                         if (i < data.films.length) {
-                            $("#films").append(datas.title);
+                            $("#films").append(datas.title + ", ");
                         } else {
                             $("#films").append(datas.title + ", ");
                         }
